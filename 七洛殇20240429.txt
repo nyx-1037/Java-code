@@ -1,0 +1,214 @@
+
+//第一题 运算符 1.设计一个程序, 输入三位数a, 分别输出百,十,个位.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("请输入：");
+        int num= scanner.nextInt();
+        int a=num/100;
+        int b=num%100/10;
+        int c=num%10;
+        System.out.println("输出：");
+        System.out.println(a);
+        System.out.println(b);
+        System.out.println(c);
+    }
+}
+
+
+//第一题 运算符 2.设计一个程序, 输入整数l, 求边长为l的正方形面积, 比直径为l的圆形面积大多少.(0<l<1000, PI取3.14, 输出结果保留两位小数)
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("请输入一个整数（0<x<1000）：");
+        final double PI=3.14;
+        double x= scanner.nextInt();
+        if(x>0 && x<1000){
+            double rel=Math.pow(x,2)-Math.pow((x/2),2)*PI;
+            System.out.printf("输出值为：%.2f",rel);
+        }else{
+            System.out.println("输入的数值无效");
+        }
+    }
+}
+
+//第二题 判断 1.设计一个程序, 输入a,b,c三个整数, 输出最大的数.
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("请输入三个整数：");
+        int[] arr=new int[3];
+        for (int i = 0; i < arr.length; i++) {
+            arr[i]=scanner.nextInt();
+        }
+        int Max=arr[0];
+        for (int i = 0; i < 3; i++) {
+            if(arr[i]>Max)
+                Max=arr[i];
+        }
+        System.out.println("最大值为："+Max);
+    }
+}
+
+//第二题 判断 2.打分系统
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner= new Scanner(System.in);
+        System.out.print("请输入做对的题目数量：");
+        int num=scanner.nextInt();
+        int rel=0;
+        if(num>=0 && num<=10){
+            rel=num*6;
+        }else if(num>10 && num<=20){
+            rel=60+(num-10)*2;
+        }else if(num>20 && num<=40){
+            rel=60+20+(num-20)*1;
+        }else{
+            System.out.println("请输入0~40的整数");
+        }
+        System.out.println("总得分为："+rel);
+    }
+}
+
+//第二题 判断 3.东东哥上班
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入一个整数 表示到公司的距离：");
+        int n = scanner.nextInt();
+        double rideTime = 0;
+        double walkTime = 0;
+        //骑车
+        rideTime = Math.round(27 + 23 + n * 3.0);
+        //走路
+        walkTime = Math.round(1.2 * n);
+        //判断
+        if (rideTime > walkTime) {
+            System.out.println("走路更快");
+        } else if (rideTime < walkTime) {
+            System.out.println("骑车更快");
+        } else {
+            System.out.println("一样快");
+        }
+    }
+}
+
+//简单循环 1.求平均年龄
+
+import java.util.Scanner;
+import java.lang.Math;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入一个整数n(0<n<100)：");
+        int n = scanner.nextInt();
+        int[] arr=new int[n];
+        double rel=0;
+        int i=0;
+        for (i = 0; i <= n-1; i++) {
+            arr[i]=scanner.nextInt();
+            rel+=arr[i];
+        }
+        rel/=n;
+        System.out.printf("平均年龄为：%.2f", rel);
+    }
+}
+
+//简单循环 2.求Sn
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入n(1<n<9):");
+        int n=scanner.nextInt();
+        System.out.print("请输入a(1<=a<=9):");
+        int a=scanner.nextInt();
+        if(n>1 && n<9 && a>=1 && a<=9){
+            int Sn=0;
+            int rel=a;
+            for (int i = 1; i <= n; i++) {
+                Sn+=rel;
+                rel=a+rel*10;
+            }
+            System.out.println("输出为：" + Sn);
+        }else{
+            System.out.println("输入无效");
+        }
+
+    }
+}
+
+
+//简单循环 3.求兔子数量（斐波那契数列）
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入月数 n（2<n<30）：");
+        int n = scanner.nextInt();
+        if (n < 3 || n > 29) {
+            System.out.println("输入的月数无效");
+        } else {
+            int rel = fib(n);
+            System.out.println(rel);
+        }
+    }
+    
+    //函数递归
+    public static int fib(int n) {
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        int a = 1, b = 1;
+        for (int i = 3; i <= n; i++) {
+            int temp = b;
+            b = a + b;
+            a = temp;
+        }
+        return b;
+    }
+}
+
+//简单循环 4.弹球高度
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入初始高度M（0<M<2000）：");
+        double M=scanner.nextDouble();
+        System.out.print("请输入回弹次数N(0<N<50)：");
+        int N=scanner.nextInt();
+        double length=0;
+        for (int i = 1; i <= N; i++) {
+            length+=M;
+            M/=2;
+            length+=M;
+        }
+        System.out.printf("第%d次回弹之后的高度为：%.2f\n",N,M);
+        System.out.printf("所经过的距离为：%.2f",length);
+    }
+}

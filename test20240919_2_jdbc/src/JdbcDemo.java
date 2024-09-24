@@ -1,7 +1,4 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.* ;
 
 public class JdbcDemo {
 		public static void main(String[] args) throws Exception {
@@ -22,7 +19,9 @@ public class JdbcDemo {
 			ResultSet resultSet =statement.executeQuery(sql);
 //        7. 处理结果
 			while(resultSet.next()){
-				System.out.println(resultSet.getString("username"));
+				System.out.println(resultSet.getString("id")
+						+ " " + resultSet.getString("username")
+						+ " " + resultSet.getString("pwd"));
 			}
 //        8. 释放资源
 			statement.close();

@@ -12,8 +12,9 @@ public class JdbcDemo2 {
 			String sql="insert into tb_user(username,pwd) values(?,?)";
 
 			PreparedStatement ps=connection.prepareStatement(sql);
-			ps.setString(1,"admin");
+			ps.setString(1,"中文测试");
 			ps.setString(2,"123456");
+
 
 			int num = ps.executeUpdate();
 			if(num>0){
@@ -21,6 +22,7 @@ public class JdbcDemo2 {
 			}else{
 				System.out.println("执行失败");
 			}
+
 			ps.close();
 			connection.close();
 
